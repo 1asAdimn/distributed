@@ -7,6 +7,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="solrj" />
+        <module name="springSecurity" />
         <module name="demo" />
         <module name="redis" />
       </profile>
@@ -14,12 +16,18 @@
     <bytecodeTargetLevel>
       <module name="demo" target="1.8" />
       <module name="redis" target="1.8" />
+      <module name="solrj" target="1.8" />
+      <module name="springSecurity" target="1.8" />
+      <module name="SpringSecurityDemo" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="SpringSecurityDemo" options="-parameters" />
       <module name="demo" options="-parameters" />
       <module name="redis" options="-parameters" />
+      <module name="solrj" options="-parameters" />
+      <module name="springSecurity" options="-parameters" />
     </option>
   </component>
 </project>
