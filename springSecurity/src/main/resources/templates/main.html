@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>main</title>
+</head>
+<body>
+<hr/>
+登陆名： <span sec:authentication="name"></span><br/>
+登陆名： <span sec:authentication="principal.username"></span><br/>
+凭  证： <span sec:authentication="credentials"></span><br/>
+权限和角色： <span sec:authentication="authorities"></span><br/>
+访问ip： <span sec:authentication="details.remoteAddress"></span><br/>
+sessionId： <span sec:authentication="details.sessionId"></span><br/>
+<hr/>
+角色判断：
+<button sec:authorize="hasRole('管理员')">新增</button>
+<button sec:authorize="hasRole('管理员')">删除</button>
+<button sec:authorize="hasRole('管理员')">修改</button>
+<button sec:authorize="hasRole('管理员')">查询</button>
+权限判断：
+<button sec:authorize="hasAuthority('demo:parent')">父节点</button>
+<button sec:authorize="hasAuthority('demo:child')">子节点</button>
+<button sec:authorize="hasAuthority('demo:insert')">添加</button>
+<button sec:authorize="hasAuthority('demo:update')">修改</button>
+<button sec:authorize="hasAuthority('demo:delete')">删除</button>
+<hr/>
+<a href="/logout">退出登录</a>
+</body>
+</html>
