@@ -1,8 +1,8 @@
-package com.zzj.rabbitmq.helloworld;
+package com.zzj.rabbitmq.workqueues;
 
-import com.zzj.rabbitmq.util.RabbitMQConnectionUtil;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
+import com.zzj.rabbitmq.util.RabbitMQConnectionUtil;
 import org.junit.Test;
 
 /**
@@ -12,7 +12,7 @@ import org.junit.Test;
  */
 public class Publisher {
 
-    public static final String QUEUE_NAME = "hello";
+    public static final String QUEUE_NAME = "workQueues";
 
     @Test
     public void publish() throws Exception {
@@ -26,8 +26,11 @@ public class Publisher {
         channel.queueDeclare(QUEUE_NAME,false,false,false,null);
 
         //4. 发布消息
-        String message = "Hello big rich!";
-        channel.basicPublish("",QUEUE_NAME,null,message.getBytes());
+
+        for (int i = 0; i < 10; i++) {
+            String message = "Hello world !"+i;
+            channel.basicPublish("",QUEUE_NAME,null,message.getBytes());
+        }
         System.out.println("消息发送成功！");
     }
 
